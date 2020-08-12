@@ -1,0 +1,36 @@
+version: '3'
+services:
+  web:
+    image: nginx:latest
+    container_name: nginx
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf:/etc/nginx
+      - ./nginx/php_processes.conf:/etc/nginx/php_processes.conf
+      - ./nginx/logs:/etc/nginx/logs
+      - ./source:/source
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    command: [nginx-debug, '-g', 'daemon off;']
+  
+  jdk:
+    image: openjdk:11.0.8-jdk
+    
+
+  db:
+    image: mysql:latest
+    container_name: mysql
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: password
+      SERVICE_TAGS: dev
+
+    volumes:
+      - ./mysql/data:/var/lib/mysql
