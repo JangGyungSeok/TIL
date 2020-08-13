@@ -2,6 +2,7 @@ package com.JKS.TIL1.Controllers;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -49,13 +50,29 @@ public class MybatisController {
     @GetMapping("/test2")
     @ResponseBody
     public String test2(){
-        SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-        String date = "2020-08-13";
 
-        Calendar c = Calendar.getInstance();
+        try{
+            // SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd",Locale.KOREA);
+            // String date = "2020-08-13";
+    
+            // Date d1 = format1.parse("2020-08-14");
+            // Date d2 = format1.parse("2020-08-15");
+    
+            // long diff = (d1.getTime() - d2.getTime())/1000;
+            // System.out.println(diff);
+            // System.out.println(format1.format(new Date()));
 
-        c.set(2020,8,13);
-        Date d = c.getTime();
-        return format1.format(d);
+
+            LocalDate timeA = LocalDate.parse("2020-08-13");
+            LocalDate timeC = LocalDate.parse("2020-08-13");
+            LocalDate timeB = LocalDate.parse("2020-08-14");
+            System.out.println(timeA.compareTo(timeC));
+            System.out.println(timeA);
+        } catch(Exception e){
+            return "실패";
+        }
+        
+
+        return "성공";
     }
 }
