@@ -11,7 +11,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
 @PropertySource("classpath:telegram.properties")
-public class TelegramService {
+public class TelegramService implements TelegramInterface{
     @Value("${TELEGRAM_URL}")
     private String telegramUrl;
 
