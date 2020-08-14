@@ -73,10 +73,13 @@ public class TelegramService implements TelegramInterface{
         String url = telegramUrl + telegramToken + "/" +"sendMessage";
         // System.out.println(url);
         RestTemplate restTemplate = new RestTemplate();
+
+        // 참고로 http요청 시 https로 redirect되는 페이지의 경우 https경로 그대로 사용하도록한다.
         UriComponentsBuilder uri = UriComponentsBuilder.fromHttpUrl(url)
         .queryParam("chat_id",telegramUser)
         .queryParam("text","abcd");
 
+        // RestTemplate 활용 http get method 실행
         ResponseEntity<String> responseEntity = restTemplate.getForEntity(uri.toUriString(), String.class);
         // System.out.println(uri.toUriString());
         System.out.println(responseEntity.getStatusCode());

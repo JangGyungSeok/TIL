@@ -8,6 +8,10 @@
     SELECT * FROM news_data
   </select>
 
+  <select id="getNewsByNewsDate" resultType="com.JKS.TIL1.DTO.NewsData" parameterType="_string">
+    SELECT * FROM news_data WHERE newsDate=#{newsDate}
+  </select>
+
   <insert id="insertNews" parameterType="com.JKS.TIL1.DTO.NewsData">
     INSERT INTO news_data(newsDate, newsTime, newsTitle, newsUrl) values(#{newsDate}, #{newsTime}, #{newsTitle},#{newsUrl})
   </insert>

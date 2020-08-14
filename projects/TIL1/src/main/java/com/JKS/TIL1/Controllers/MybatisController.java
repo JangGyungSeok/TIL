@@ -52,17 +52,6 @@ public class MybatisController {
     public String test2(){
 
         try{
-            // SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd",Locale.KOREA);
-            // String date = "2020-08-13";
-    
-            // Date d1 = format1.parse("2020-08-14");
-            // Date d2 = format1.parse("2020-08-15");
-    
-            // long diff = (d1.getTime() - d2.getTime())/1000;
-            // System.out.println(diff);
-            // System.out.println(format1.format(new Date()));
-
-
             LocalDate timeA = LocalDate.parse("2020-08-13");
             LocalDate timeC = LocalDate.parse("2020-08-13");
             LocalDate timeB = LocalDate.parse("2020-08-14");
